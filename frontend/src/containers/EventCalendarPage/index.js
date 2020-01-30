@@ -1,8 +1,13 @@
 import React from "react";
 
+import Clock from "../../components/Clock";
+
 function EventCalendarPage() {
     return (
-        <h2>Event Calendar Page</h2>
+        <div>
+            <h2>Event Calendar Page</h2>
+            <Clock />
+        </div>
     );
 }
 
