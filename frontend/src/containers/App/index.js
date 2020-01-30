@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {
     BrowserRouter as Router,
     Switch,
     Route
-} from 'react-router-dom';
-import {
-    EventCalendarPage,
-    WeatherPage,
-    NewsPage
-} from '../pages';
-import Header from "../header";
+} from "react-router-dom";
+import Header from "../../components/Header";
+
+import EventCalendarPage from "../EventCalendarPage";
+import WeatherPage from "../WeatherPage";
+import NewsPage from "../NewsPage";
+import NotFoundPage from "../NotFoundPage";
 
 export default class App extends Component {
     render() {
@@ -17,7 +17,7 @@ export default class App extends Component {
             <Router>
                 <Header />
                 <Switch>
-                    <Route path="/" exact >
+                    <Route path="/" exact>
                         <EventCalendarPage />
                     </Route>
                     <Route path="/weather">
@@ -26,7 +26,9 @@ export default class App extends Component {
                     <Route path="/news">
                         <NewsPage />
                     </Route>
-                    <Route render={() => <h2>Page not found</h2>} />
+                    <Route path="">
+                        <NotFoundPage />
+                    </Route>
                 </Switch>
             </Router>
         );
