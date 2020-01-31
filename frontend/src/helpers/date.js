@@ -8,17 +8,7 @@ const getDetailedTime = () => {
     };
 };
 
-const getDetailedDate = () => {
-    const date = new Date();
-
-    return {
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        day: date.getDate()
-    };
-};
-
-const getCurrentDate = () => {
+const getCurrentDateString = () => {
     const date = new Date();
     const options = {
         weekday: 'short',
@@ -47,6 +37,5 @@ const getDayEndTime = () => {
 export {
     getCurrentTime,
     getDayEndTime,
-    getCurrentDate,
-    getDetailedDate
+    getCurrentDateString
 }
