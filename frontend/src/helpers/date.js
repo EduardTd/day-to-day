@@ -1,31 +1,31 @@
 const getDetailedTime = () => {
-    const date = new Date();
+    const dateNow = new Date();
 
     return {
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds()
+        hours: dateNow.getHours(),
+        minutes: dateNow.getMinutes(),
+        seconds: dateNow.getSeconds()
     };
 };
 
 const getCurrentDateString = () => {
-    const date = new Date();
+    const dateNow = new Date();
     const options = {
         weekday: 'short',
         month: 'long',
         day: 'numeric'
     };
 
-    return date.toLocaleDateString('en-US', options);
+    return dateNow.toLocaleDateString('en-US', options);
 };
 
 const getCurrentTime = () => {
-    const date = new Date();
+    const dateNow = new Date();
     const options = {
         hour12: false
     };
 
-    return date.toLocaleTimeString('en-US', options);
+    return dateNow.toLocaleTimeString('en-US', options);
 };
 
 const getDayEndTime = () => {

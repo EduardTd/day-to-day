@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import 'sanitize.css/sanitize.css';
+
 import {
     BrowserRouter as Router,
     Switch,

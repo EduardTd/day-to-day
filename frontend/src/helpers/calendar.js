@@ -22,12 +22,11 @@ const formatCellData = (value, date, type) => {
  */
 const createCalendarData = (date) => {
     const cellQty = 42;
-
-    let previousCells = getPreviousMonthDays(date);
-    let currentCells = getCurrentMonthDays(date);
-    let calendarCells = [...previousCells, ...currentCells];
-    let limiter = cellQty - calendarCells.length;
-    let nextCells = getNextMonthDays(date, limiter);
+    const previousCells = getPreviousMonthDays(date);
+    const currentCells = getCurrentMonthDays(date);
+    const calendarCells = [...previousCells, ...currentCells];
+    const limiter = cellQty - calendarCells.length;
+    const nextCells = getNextMonthDays(date, limiter);
 
     return [...calendarCells, ...nextCells];
 };
@@ -40,12 +39,12 @@ const createCalendarData = (date) => {
  * @returns {[]}
  */
 const getCurrentMonthDays = ({ year, month }) => {
-    const currentDate = new Date(year, month, 0);
-    const dayQty = currentDate.getDate();
+    const dateNow = new Date(year, month, 0);
+    const dayQty = dateNow.getDate();
     const actualDays = [];
 
     for (let counter = 1; counter <= dayQty; counter++) {
-        let actualDate = new Date(currentDate);
+        let actualDate = new Date(dateNow);
 
         actualDate.setDate(counter);
         actualDays.push(formatCellData(counter, actualDate, 'currentMonth'));

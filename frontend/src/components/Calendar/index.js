@@ -1,25 +1,24 @@
-import React from "react"
-import PreviousMonthDay from "./PreviousMonthDay";
+import React, { useState } from "react"
+
 import GetCalendarData from "../../helpers/calendar";
+import CellList from "./CellList";
+import CurrentDate from "./CurrentDate";
+
+import { CalendarDateProvider } from "./CalendarDateContext";
 
 function Calendar() {
-    // const cellData = GetCalendarData();
-
-    // const Cells = cellData.map((dataItem) => {
-        // if (dataItem.type === 'previousMonth') {
-        //     return (
-        //         <PreviousMonthDay cellData={dataItem}/>
-        //     )
-        // }
-        // return(
-        //     <span>asdas</span>
-        // )
-    // });
+    const [cellListState, setCellListState] = useState(new Date());
+    const cellList = GetCalendarData(cellListState);
+    const contextValue = {
+        value: cellListState,
+        setValue: setCellListState
+    };
 
     return (
-        <div>
-            sdfsdf
-        </div>
+        <CalendarDateProvider value={contextValue}>
+            <CurrentDate />
+            <CellList cellList={cellList} />
+        </CalendarDateProvider>
     );
 }
 
