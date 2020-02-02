@@ -1,29 +1,23 @@
-import React, { useEffect, cloneElement } from "react"
-import { useInput } from "./useInput";
+import React, {useEffect, useContext, useState} from "react"
+import {DateContext} from "../../containers/EventCalendarPage/DateContext";
 
-function TimeInput({children, defaultValue, label, reset}) {
-    const {
-        value,
-        bind,
-        setValue,
-        reset: resetValue
-    } = useInput('');
+function TimeInput({endTime, ...props}) {
+    const [defaultValue, setDefaultValue] = useState('');
+    const dateContext = useContext(DateContext);
+    const currentDate = dateContext.value;
+    let currentHour = currentDate.getHours();
 
     useEffect(() => {
-        if (defaultValue) {
-            setValue(defaultValue);
+        if (endTime) {
+            currentHour = currentHour + 1
         }
+
+        const formattedHour = `${('0' + currentHour).slice(-2)}:00`;
+        setDefaultValue(formattedHour);
     }, []);
 
-    if (reset) {
-        resetValue();
-    }
-
     return (
-        <div>
-            <label>{label}</label>
-            {cloneElement(children,{...bind})}
-        </div>
+        <input type="text" value={defaultValue} {...props} />
     );
 }
 

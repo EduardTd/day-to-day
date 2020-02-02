@@ -22,7 +22,7 @@ function Field({children, defaultValue, label, reset}) {
     return (
         <div>
             <label>{label}</label>
-            {cloneElement(children,{...bind})}
+            {cloneElement(children, {...bind})}
         </div>
     );
 }

@@ -5,32 +5,19 @@ import Content from "./styledComponents/Content"
 import Form from "./styledComponents/Form";
 
 import Field from "./Field";
-
-import { useInput } from "./useInput";
-import { DateContext } from "../../containers/EventCalendarPage/DateContext";
+import TimeInput from "./TimeInput";
 
 function PopUp({visible, setVisibility}) {
-    const [resetAll, setResetAll] = useState(false);
-
-    const { value:startTime, bind:bindStartTime, reset:resetStartTime } = useInput('');
-    const { value:endTime, bind:bindEndTime, reset:resetEndTime } = useInput('');
-
-    const dateContext = useContext(DateContext);
-    const currentDate = dateContext.value;
-
     const title = undefined;
     const note = undefined;
+    const startTime = undefined;
+    const endTime = undefined;
+
+    const [resetAll, setResetAll] = useState(false);
 
     if (!visible) {
         return null;
     }
-
-    let currentHour = currentDate.getHours();
-
-    const time = {
-        start: `${('0' + currentHour).slice(-2)}:00`,
-        end: `${('0' + (currentHour + 1)).slice(-2)}:00`
-    };
 
     const hideForm = (event) => {
         event.preventDefault();
@@ -52,14 +39,12 @@ function PopUp({visible, setVisibility}) {
                     <Field defaultValue={note} label={'Note'} reset={resetAll} >
                         <textarea placeholder={'Enter note...'} />
                     </Field>
-                    <div>
-                        <label>Start Time</label>
-                        <input type="text" {...bindStartTime} value={time.start} />
-                    </div>
-                    <div>
-                        <label>End Time</label>
-                        <input type="text" {...bindEndTime} value={time.end} />
-                    </div>
+                    <Field defaultValue={startTime} label={'Start Time'} reset={resetAll} >
+                        <TimeInput />
+                    </Field>
+                    <Field defaultValue={endTime} label={'End Time'} reset={resetAll} >
+                        <TimeInput endTime={true} />
+                    </Field>
                     <button onClick={hideForm}>Cancel</button>
                     <button type="submit">Save</button>
                 </Form>
