@@ -1,7 +1,7 @@
 import React from "react";
 import WeekDayItem from "./WeekDayItem";
 import Wrapper from "./Wrapper";
-import {getWeekDayNames} from "../../helpers/weekDay"
+import {getWeekDayNames} from "./utils/weekDay"
 
 const getWeekDays = () => {
     const shortDayNames = getWeekDayNames();

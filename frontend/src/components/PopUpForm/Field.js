@@ -1,19 +1,11 @@
-import React, { useEffect, cloneElement } from "react"
-import { useInput } from "./useInput";
+import React, {cloneElement} from "react"
+import {useInput} from "./utils/useInput";
 
 function Field({children, defaultValue, label, reset}) {
     const {
-        value,
         bind,
-        setValue,
         reset: resetValue
-    } = useInput('');
-
-    useEffect(() => {
-        if (defaultValue) {
-            setValue(defaultValue);
-        }
-    }, []);
+    } = useInput(defaultValue);
 
     if (reset) {
         resetValue();
@@ -22,7 +14,9 @@ function Field({children, defaultValue, label, reset}) {
     return (
         <div>
             <label>{label}</label>
-            {cloneElement(children, {...bind})}
+            <div>
+                {cloneElement(children, {...bind})}
+            </div>
         </div>
     );
 }

@@ -5,7 +5,8 @@ const Ul = styled.ul`
     flex-wrap: wrap;
     height: 100vw;
     padding: 0;
-    width: 100vw;
+    width: 99vw;
+    margin-top: 0;
 `;
 
 export default Ul;
