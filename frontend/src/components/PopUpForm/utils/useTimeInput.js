@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import timeMask from "./timeMask";
 
 const useTimeInput = (initialValue) => {
@@ -7,7 +7,6 @@ const useTimeInput = (initialValue) => {
     return {
         value: inputValue,
         setValue: setInputValue,
-        reset: () => setInputValue(''),
         bind: {
             value: inputValue,
             onChange: (event) => {

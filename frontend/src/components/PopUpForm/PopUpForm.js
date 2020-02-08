@@ -1,83 +1,84 @@
-import React, {useRef, useState} from "react"
-import { useForm } from 'react-hook-form'
+import React from "react";
+import {useForm} from 'react-hook-form';
+import validate from "./utils/validate"
 
-import Wrapper from "./styledComponents/Wrapper"
-import Content from "./styledComponents/Content"
+import Wrapper from "./styledComponents/Wrapper";
+import Content from "./styledComponents/Content";
 import Form from "./styledComponents/Form";
-import TimeInputEl from "./TimeInputEl"
-
-// import Field from "./Field";
-import TimeField from "./TimeField";
+import TimeInputEl from "./TimeInput";
 
 function PopUp({visible, setVisibility}) {
-    const title = undefined;
-    const note = undefined;
-    const startTime = undefined;
-    const endTime = undefined;
+    const title = 'asdf';
+    const note = 'a2563456sdf';
+    const startTime = '21:00';
+    const endTime = '21:56';
 
     const { register, handleSubmit, reset, errors } = useForm({
         mode: 'onBlur',
-        reValidateMode: 'onChange'
+        reValidateMode: 'onChange',
+        defaultValues: {
+            title,
+            note,
+            startTime,
+            endTime
+        }
     });
-
-    const timeRef = useRef(register({
-        required: true,
-        maxLength: 8,
-        minLength: 4,
-    }));
 
     if (!visible) {
         return null;
     }
 
     const hideForm = (event) => {
-        // event.preventDefault();
-        // setVisibility(false);
-        // reset();
+        event.preventDefault();
+        setVisibility(false);
+        reset();
     };
 
     const onSubmit = (data, event) => {
         hideForm(event);
     };
 
-
-
-
     return (
         <Wrapper>
             <Content>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    {/*<Field defaultValue={title} label={'Title'} reset={resetAll} >*/}
-                        <input type="text"
-                               name="title"
-                               placeholder={'Enter title...'}
-                               ref={register({
-                                   required: true,
-                                   maxLength: 8,
-                                   minLength: 4,
-                               })}
-                        />
-                    {errors.title && <span>This field is required</span>}
-                    {/*</Field>*/}
-                    {/*<Field defaultValue={note} label={'Note'} reset={resetAll} >*/}
-                        <textarea name={'note'}
-                                  placeholder={'Enter note...'}
-                                  ref={register}
-                        />
-                    {/*</Field>*/}
-                    {/*<TimeField defaultValue={startTime} label={'Start Time'} >*/}
-                        <input type="number"
-                               name={'startTime'}
-                        />
-                    {/*</TimeField>*/}
-                    {/*<TimeField defaultValue={endTime} label={'End Time'} endTime >*/}
-                        <TimeInputEl type="number"
-                                     name="endTime"
-                                     forwardRef={timeRef}
-                                     endTime
-                        />
-                        {errors.endTime && <span>This field is required</span>}
-                    {/*</TimeField>*/}
+                    <input type="text"
+                           name="title"
+                           placeholder={'Enter title...'}
+                           ref={register(validate({
+                               required: true,
+                               maxTextLength: 5
+                           }))}
+                    />
+                    {errors.title && <span>{errors.title.message}</span>}
+
+                    <textarea name="note"
+                              placeholder={'Enter note...'}
+                              ref={register(validate({
+                                  maxTextLength: 5
+                              }))}
+                    />
+                    {errors.note && <span>{errors.note.message}</span>}
+
+                    <TimeInputEl type="text"
+                                 name="startTime"
+                                 register={register(validate({
+                                     required: true,
+                                     time: true
+                                 }))}
+                    />
+                    {errors.startTime && <span>{errors.startTime.message}</span>}
+
+                    <TimeInputEl type="text"
+                                 name="endTime"
+                                 register={register(validate({
+                                    required: true,
+                                    time: true
+                                 }))}
+                                 endTime
+                    />
+                    {errors.endTime && <span>{errors.endTime.message}</span>}
+
                     <button onClick={hideForm}>Cancel</button>
                     <button type="submit">Save</button>
                 </Form>
