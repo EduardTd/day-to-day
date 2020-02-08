@@ -43,7 +43,9 @@ const validate = (rules) => {
     const storedRules = storeRules(rules);
 
     const validator = (value) => {
-        return getMessage(value, storedRules);
+        const message = getMessage(value, storedRules);
+
+        return message ? message : true;
     };
 
     return {validate: validator};

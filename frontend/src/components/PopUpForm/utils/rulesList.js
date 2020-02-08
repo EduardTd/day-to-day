@@ -1,8 +1,8 @@
 const isEmpty = (value) => {
     return value === '' ||
-        value == null ||
-        value.length === 0 ||
-        /^\s+$/.test(value);
+           value == null ||
+           value.length === 0 ||
+           /^\s+$/.test(value);
 };
 
 const rulesList = {
@@ -28,13 +28,8 @@ const rulesList = {
         };
         const message = 'Please enter a valid time, between 00:00 and 23:59';
 
-        console.log(value);
         return handler(value) ? '' : message;
     }
 };
 
-
 export default rulesList;
-export {
-    isEmpty
-}
