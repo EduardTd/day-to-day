@@ -3,6 +3,7 @@ import {useInput} from "./utils/useInput";
 
 function Field({children, defaultValue, label, reset}) {
     const {
+        value,
         bind,
         reset: resetValue
     } = useInput(defaultValue);
@@ -11,11 +12,15 @@ function Field({children, defaultValue, label, reset}) {
         resetValue();
     }
 
+    const onBlurCallback = (event) => {
+
+    };
+
     return (
         <div>
             <label>{label}</label>
             <div>
-                {cloneElement(children, {...bind})}
+                {cloneElement(children, {...bind, onBlur: onBlurCallback})}
             </div>
         </div>
     );

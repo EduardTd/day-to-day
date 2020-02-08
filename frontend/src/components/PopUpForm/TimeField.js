@@ -6,13 +6,11 @@ function TimeField({
    children,
    endTime,
    defaultValue,
-   label,
-   reset
+   label
 }) {
     const {
         bind,
-        setValue,
-        reset: resetValue
+        setValue
     } = useTimeInput(defaultValue);
     const dateContext = useContext(DateContext);
     const currentDate = dateContext.value;
@@ -27,10 +25,6 @@ function TimeField({
         const formattedHour = `${('0' + currentHour).slice(-2)}:00`;
         setValue(formattedHour);
     }, []);
-
-    if (reset) {
-        resetValue();
-    }
 
     return (
         <div>
