@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentDateString, getDayEndTime } from "../../helpers/date";
+import { getCurrentDateString, getDayEndTime } from "../Calendar/utils/date";
 
 function LiveDate() {
     const [date, setDate] = useState(getCurrentDateString());

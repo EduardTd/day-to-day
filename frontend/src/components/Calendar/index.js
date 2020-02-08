@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 
-import GetCalendarData from "../../helpers/calendar";
+import GetCalendarData from "./utils/calendar";
 import CellList from "./CellList";
 import CurrentDate from "./CurrentDate";
+import WeekDayRow from "./WeekDayRow";
 
 import { CalendarDateProvider } from "./CalendarDateContext";
 
@@ -17,6 +18,7 @@ function Calendar() {
     return (
         <CalendarDateProvider value={contextValue}>
             <CurrentDate />
+            <WeekDayRow />
             <CellList cellList={cellList} />
         </CalendarDateProvider>
     );

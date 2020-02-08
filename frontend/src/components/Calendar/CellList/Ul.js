@@ -3,9 +3,12 @@ import styled from 'styled-components';
 const Ul = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    height: 100vw;
     padding: 0;
-    width: 100vw;
+    margin-top: 0;
+    width: 99vw;
+    height: 99vw;
+    max-width: 640px;
+    max-height: 640px;
 `;
 
 export default Ul;
