@@ -1,13 +1,9 @@
-import React, {useContext, useState} from "react"
+import React, {useState} from "react";
 
 import Button from "./Button";
 import PopUpForm from "../PopUpForm";
 
-import { DateContext } from "../../containers/EventCalendarPage/DateContext";
-
 function CreateEvent() {
-    const dateContext = useContext(DateContext);
-    const [dateState, setDateState] = useState(dateContext);
     const [popUpVisibility, setPopUpVisibility] = useState(false);
 
     const openFormPopUp = () => {

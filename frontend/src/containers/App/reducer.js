@@ -7,7 +7,9 @@ const initialState = {
 const reducer = (state =  initialState, action) => {
     switch (action.type) {
         case CHANGE_DATE: {
-            return state.activeDate = action.selectedDate;
+            state.activeDate = action.selectedDate;
+
+            return state;
         }
         default: {
             return state;

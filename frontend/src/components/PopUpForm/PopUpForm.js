@@ -1,21 +1,21 @@
-import React, {useContext} from "react";
+import React from "react";
 import {useForm} from 'react-hook-form';
+import {useSelector} from "react-redux";
 import validate from "./utils/validate";
 import getFormattedTime from "./utils/getFormattedTime"
 
 import Wrapper from "./styledComponents/Wrapper";
 import Content from "./styledComponents/Content";
 import Form from "./styledComponents/Form";
-import {DateContext} from "../../containers/EventCalendarPage/DateContext";
 
 function PopUp({visible, setVisibility}) {
-    const dateContext = useContext(DateContext);
+    const activeDate = useSelector(state => state.activeDate);
     const title = '';
     const note = '';
-    const startTime = getFormattedTime('', dateContext);
-    const endTime = getFormattedTime('', dateContext, true);
-
-    const { register, handleSubmit, reset, errors, setValue } = useForm({
+    const startTime = getFormattedTime('', activeDate);
+    const endTime = getFormattedTime('', activeDate, true);
+    
+    const { register, handleSubmit, reset, errors } = useForm({
         mode: 'onBlur',
         reValidateMode: 'onChange',
         defaultValues: {
