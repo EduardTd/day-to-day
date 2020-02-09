@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { getCurrentTime } from "../Calendar/utils/date";
+import React, {useState, useEffect} from "react";
+import {getCurrentTime} from "../Calendar/utils/date";
 
 function LiveTime() {
     const [time, setTime] = useState(getCurrentTime());

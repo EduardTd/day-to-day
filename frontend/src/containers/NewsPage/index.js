@@ -1,9 +1,3 @@
-import React from "react";
-
-function NewsPage() {
-    return (
-        <h2>News Page</h2>
-    );
-}
+import NewsPage from "./NewsPage";
 
 export default NewsPage;

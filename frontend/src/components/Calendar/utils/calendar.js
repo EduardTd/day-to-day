@@ -38,7 +38,7 @@ const createCalendarData = (date) => {
  * @param month
  * @returns {[]}
  */
-const getCurrentMonthDays = ({ year, month }) => {
+const getCurrentMonthDays = ({year, month}) => {
     const dateNow = new Date(year, month, 0);
     const dayQty = dateNow.getDate();
     const actualDays = [];
@@ -62,7 +62,7 @@ const getCurrentMonthDays = ({ year, month }) => {
  * @param limiter
  * @returns {[]}
  */
-const getNextMonthDays = ({ year, month }, limiter) => {
+const getNextMonthDays = ({year, month}, limiter) => {
     const nextDate = new Date(year, month + 1, 0);
     const actualDays = [];
     let dayValue = 0;
@@ -86,7 +86,7 @@ const getNextMonthDays = ({ year, month }, limiter) => {
  * @param month
  * @returns {[]}
  */
-const getPreviousMonthDays = ({ year, month }) => {
+const getPreviousMonthDays = ({year, month}) => {
     const previousDate = new Date(year, month - 1, 0);
     const dayQty = previousDate.getDate();
     const positionInWeek = previousDate.getDay();

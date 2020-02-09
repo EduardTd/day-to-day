@@ -8,14 +8,14 @@ import Wrapper from "./styledComponents/Wrapper";
 import Content from "./styledComponents/Content";
 import Form from "./styledComponents/Form";
 
-function PopUp({visible, setVisibility}) {
+function PopUp({setVisibility}) {
     const activeDate = useSelector(state => state.activeDate);
     const title = '';
     const note = '';
     const startTime = getFormattedTime('', activeDate);
     const endTime = getFormattedTime('', activeDate, true);
-    
-    const { register, handleSubmit, reset, errors } = useForm({
+
+    const {register, handleSubmit, reset, errors, setValue} = useForm({
         mode: 'onBlur',
         reValidateMode: 'onChange',
         defaultValues: {
@@ -25,10 +25,6 @@ function PopUp({visible, setVisibility}) {
             endTime
         }
     });
-
-    if (!visible) {
-        return null;
-    }
 
     const hideForm = (event) => {
         event.preventDefault();

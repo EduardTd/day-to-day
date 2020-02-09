@@ -1,21 +1,3 @@
-import React from "react";
-
-import CellItem from "../CellItem";
-import Ul from "./Ul";
-
-function CellList({ cellList }) {
-    let content = <CellItem />;
-
-    if (cellList && cellList.length) {
-        content = cellList.map(({value, date, type}) => (
-            <CellItem key={value + type} text={value} date={date}/>
-        ));
-    }
-
-    return (
-        <Ul>{content}</Ul>
-    );
-}
-
+import CellList from "./CellList";
 
 export default CellList;
