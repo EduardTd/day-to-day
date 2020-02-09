@@ -28,7 +28,7 @@ const getPreviousWeekDayNames = (today, currentDate) => {
 };
 
 const getNextWeekDayNames = (today, currentDate) => {
-    const lastDayNumber = 7;
+    const lastDayNumber = 6;
     let namesArray = [];
     let storedDate = currentDate;
 
