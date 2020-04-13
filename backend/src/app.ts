@@ -10,7 +10,6 @@ const app = async () => {
     const { port } = config;
 
     await Loaders({ app });
-
     app.listen(port, () => console.log(`App listening on port ${port}`));
 };
 
